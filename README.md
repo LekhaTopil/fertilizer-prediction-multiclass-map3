@@ -1,7 +1,5 @@
 # **Optimal Fertilizer Prediction: Multi-Class Classification with MAP@3**
-![alt text](https://img.shields.io/badge/Python-3.11.13-blue)
-
-![alt text](https://img.shields.io/badge/Machine%20Learning-XGBoost%20%7C%20LightGBM-green)
+![alt text](https://img.shields.io/badge/Python-3.11.13-blue)   ![alt text](https://img.shields.io/badge/Machine%20Learning-XGBoost%20%7C%20LightGBM-green)
 
 # 📌 **Project Overview**
 This project addresses a multi-class classification challenge to predict the most suitable fertilizer for various agricultural scenarios. Using a dataset of 1 million records (750k train / 250k test), the objective is to rank the **top 3 fertilizer recommendations** based on environmental and soil-related features.
@@ -39,12 +37,12 @@ I created ratios to measure the social balance of an individual's lifestyle.
 ## **Validation:** 
  - Used a 5-Fold Stratified K-Fold strategy (maintaining class balance across folds).
 
-## **Algorithms:**
-- XGBoost: Highly effective for capturing non-linear patterns.
-- LightGBM: Chosen as the final model due to superior consistency in validation scores and better performance on the Private Leaderboard.
+## **Algorithms**
+- **LightGBM** and **XGBoost** were used for model training and evaluation.
+- Both models performed competitively, but **LightGBM showed slightly better cross-validation stability and Private Leaderboard performance**, and was therefore selected for final predictions.
 
 
-## 🔍 **Key Insights & Feature Importance**
-Context is King: The soil_crop_combo feature was consistently the most important, proving that fertilizer needs are highly dependent on the interaction between soil and crop type rather than raw values alone.
-
-Synthetic Data Behavior: While probability encoding and complex agronomic features were implemented, some showed limited value compared to raw interactions, likely due to the synthetic nature of the deep-learning-generated dataset.
+# 🔍 **Key Insights & Feature Importance**
+- The combined feature **soil_crop_combo** (soil type x crop type) emerged as the most influential factor in fertilizer recommendation.
+- Engineered **NPK ratio** and **interaction features** (e.g., **npk_balance, nutrient ratios,** and **climate-nutrient** interactions) significantly improved model performance.
+- Fertilizer probability target encoding based on **soil-crop** groups showed limited benefit, likely due to the synthetic dataset structure.
