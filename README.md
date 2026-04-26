@@ -17,18 +17,13 @@ The performance is measured using **Mean Average Precision at 3 (MAP@3).** This 
 
 # 🛠 **Feature Engineering (The Core Approach)**
 Since the dataset is synthetic, significant effort was placed on introducing real-world agronomic complexity through engineered features:
-## **1. Contextual Ratios (Social Balance)**
-I created ratios to measure the social balance of an individual's lifestyle.
-- **social_vs_alone_ratio:** Comparing social attendance to time spent alone helps identify if an individual seeks external stimulation or internal reflection, regardless of how busy their overall schedule is.
-- **alone_to_friends_ratio:** This measures the depth vs. breadth of social connections. A large friend circle with high time spent alone suggests a different social profile than a small circle with low alone time.
-- **posting_freq_vs_social_event_ratio:** This distinguishes between "Digital Extroversion" (social media) and "Physical Extroversion" (event attendance).
   
-## **2. Domain-Specific Interactions**
+## **1. Domain-Specific Interactions**
 - **Composite Features:** Created **`soil_crop_combo`** by combining soil and crop types. This became the most influential feature in the model.
 - **Nutrient Ratios:** Engineered **NPK-derived** features including **`npk_balance`**, **`n_p_ratio`**, **`n_k_ratio`**, and **`p_k_ratio`**.
 - **Climate Stress Indicators:** Features like **`hot_dry_conditions`** and **`ideal_growing_conditions`** were derived from temperature and moisture data.
 
-## **3. Probability Encoding**
+## **2. Probability Encoding**
 - **Group-wise Likelihoods:** Created a function to calculate the mean distribution of fertilizer labels within specific soil_crop_combo groups.
 - **Leakage Prevention:** These probabilities were computed strictly within a **5-Fold Stratified K-Fold cross-validation loop** to ensure the model generalizes to unseen data and to capture historical tendencies without data leakage.
 
